@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          I am a tigerbear here me roar {' '}
+          I am a lionturtle here me roar {' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
 

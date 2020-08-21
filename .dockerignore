@@ -1,4 +1,8 @@
-node_modules
+.git/
+.gitignore
+.next/
 .dockerignore
 Dockerfile
-.gitignore
+docker-compose.yml
+node_modules/
+nginx/

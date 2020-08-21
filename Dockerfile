@@ -1,11 +1,14 @@
-FROM node:12-alpine
+FROM node:alpine
 
-RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
-COPY package.json package-lock.json yarn.lock ./
+RUN npm install --global pm2
+
+COPY package*.json ./
+
 RUN npm install --production
-COPY . /usr/app
+
+COPY . .
 
 RUN npm run build
 
@@ -15,4 +18,9 @@ RUN npm run build
 # this can be changed in package.json by including the -p <port> flag next to next start
 # https://stackoverflow.com/questions/22111060/what-is-the-difference-between-expose-and-publish-in-docker
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+
+USER node
+
+# instead of running npm run start, we use PM2, a production-ready process manager for node js
+# PM2 just makes sure our app is always restarted after crashing
+CMD ["pm2-runtime", "npm", "--", "run", "start"]

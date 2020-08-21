@@ -1,10 +1,9 @@
-version: "3.7"
+version: '3'
 
 services:
   nextjs:
-    build: ./
+    build: .
+  nginx:
+    build: ./nginx
     ports:
-      - 4000:3000
-    volumes:
-      - ".:/usr/app"
-      - "/usr/app/node_modules"
+      - 80:80
