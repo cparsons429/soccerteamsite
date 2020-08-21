@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-import { Player } from 'models/interfaces';
+import { Player } from "models/interfaces";
 
 
 type Props = {

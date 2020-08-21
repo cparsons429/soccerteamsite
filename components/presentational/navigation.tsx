@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 
 type Props = {};
