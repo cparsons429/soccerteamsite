@@ -15,15 +15,13 @@ const FullRoster: React.FC<Props> = props => {
   return (
     <div>
       <ul>
-        {players.list.map((player) => {
-          return (
-            <li key={player.name.last}>
-              <Link href="/roster/[number]" as={`/roster/${player.number}`}>
-                <a>#{player.number} {player.name.first} {player.name.last}</a>
-              </Link>
-            </li>
-          )
-        })}
+        {players.list.map((player) => (
+          <li key={player.name.last}>
+            <Link href="/roster/[number]" as={`/roster/${player.number}`}>
+              <a>#{player.number} {player.name.first} {player.name.last}</a>
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

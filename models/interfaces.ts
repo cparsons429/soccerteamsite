@@ -10,5 +10,5 @@ export interface Player {
 };
 
 export interface Players {
-  list: Array<Player>;
+  list: Player[];
 };

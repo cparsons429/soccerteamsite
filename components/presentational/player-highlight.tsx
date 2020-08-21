@@ -25,7 +25,10 @@ const PlayerHighlight: React.FC<Props> = props => {
   } else {
     return (
       <div>
-        <p>Sorry, but the player was not found.</p>
+        <div>
+          <p>Sorry, but the player was not found.</p>
+        </div>
+        <Link href="/roster"><a>Back</a></Link>
       </div>
     );
   }
