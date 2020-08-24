@@ -21,14 +21,16 @@ const PlayersReducer = createReducer(initialState, builder =>
       return state;
     })
     .addCase(constants.FULL_ROSTER_SUCCESS, (state, action: RootAction) => {
-      const frsTmpState1 = setIn(state, ["players"], action.payload);
+      const frsTmpState1 = setIn(state, ["players"], action.payload.players);
 
       return frsTmpState1;
     })
-    .addCase(constants.PLAYER_HIGHLIGHT_SUCCESS, (state, action: RootAction) => {
-      const phsNumber = getIn(action.payload, ["number"], null);
+    .addCase(
+        constants.PLAYER_HIGHLIGHT_SUCCESS,
+        (state, action: RootAction) => {
+      const phsNumber = getIn(action.payload.player, ["number"], null);
       const phsTmpState1 = setIn(state, ["players", "list", phsNumber],
-          action.payload);
+          action.payload.player);
 
       return phsTmpState1;
     })
