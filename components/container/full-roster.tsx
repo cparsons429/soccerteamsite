@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { fromJS } from "immutable";
 
@@ -15,9 +15,7 @@ import FullRoster from "components/presentational/full-roster";
 import { Player } from "models/interfaces";
 
 
-type Props = { };
-
-const FullRosterContainer: React.FC<Props> = () => {
+const FullRosterContainer = () => {
   const [ queried, setQueried ] = useState(false);
   const dispatch = useDispatch();
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { fromJS, getIn } from "immutable";
 
@@ -13,7 +13,6 @@ import axios from "axios";
 
 import PlayerHighlight from "components/presentational/player-highlight";
 
-import { Player } from "models/interfaces";
 import { RootState } from "models/types";
 
 
@@ -50,7 +49,7 @@ const PlayerHighlightContainer: React.FC<Props> = props => {
   });
 
   const player = useSelector(
-    (state: RootState): Player => getPlayer(state, number)
+    (state: RootState) => getPlayer(state, number)
   );
 
   if (queried) {

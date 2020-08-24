@@ -1,13 +1,9 @@
-import React from "react";
-
 import Link from "next/link";
 
 import { Container, Navbar, Nav } from "react-bootstrap";
 
 
-type Props = {};
-
-const Navigation: React.FC<Props> = () => (
+const Navigation = () => (
   <Container>
     <Navbar bg="white" expand="lg">
       <Link href="/">

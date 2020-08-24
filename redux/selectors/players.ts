@@ -2,11 +2,10 @@ import { getIn } from "immutable";
 
 import { createSelector } from "reselect";
 
-import { Players } from "models/interfaces";
 import { RootState } from "models/types";
 
 
-export const getPlayers = (state: RootState): Players =>
+export const getPlayers = (state: RootState) =>
     getIn(state, ["playersState", "players"], null);
 
 export const getPlayer = createSelector(
