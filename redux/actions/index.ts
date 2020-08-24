@@ -1,4 +1,4 @@
-import { createAction } from "typesafe-actions";
+import { createAction } from "@reduxjs/toolkit";
 
 import { fromJS } from "immutable";
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { fromJS, getIn } from "immutable";
 
-import propsToJS from "helpers/props-to-js";
+import propsToJS from "data/props-to-js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { playerHighlightSuccess, playerHighlightFail }
@@ -21,35 +21,40 @@ type Props = {
 };
 
 const PlayerHighlightContainer: React.FC<Props> = props => {
-  const [ number ] = useState(parseInt(props.numberStr, 10));
+  const [ numberStr ] = useState(props.numberStr);
   const [ queried, setQueried ] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get("https://randomuser.me/api/?results=20&seed=ef982b7030296251")
-    .then(results => (
-      results.data
-    )).then(data => {
-      const returnPlayer = fromJS(data.results[number]);
+    const fetchPlayers = async () => {
+      const result = await axios.get
+          ("https://randomuser.me/api/?results=20&seed=ef982b7030296251");
+
+      const returnPlayer = fromJS(result.data.results[parseInt(numberStr, 10)]);
 
       if (returnPlayer) {
         const returnPlayerMinimized = fromJS({
-          number: number,
-          name: getIn(returnPlayer, ["name"], null),
+          number: parseInt(numberStr, 10),
+          name: {
+            first: getIn(returnPlayer, ["name", "first"], null),
+            last: getIn(returnPlayer, ["name", "last"], null),
+          },
           pictureSrc: getIn(returnPlayer, ["picture", "medium"], null),
         });
 
-        dispatch(playerHighlightSuccess()(returnPlayerMinimized));
+        dispatch(playerHighlightSuccess(returnPlayerMinimized));
       } else {
-        dispatch(playerHighlightFail()());
+        dispatch(playerHighlightFail());
       }
 
       setQueried(true);
-    });
-  });
+    };
+
+    fetchPlayers();
+  }, []);
 
   const player = useSelector(
-    (state: RootState) => getPlayer(state, number)
+    (state: RootState) => getPlayer(state, parseInt(numberStr, 10))
   );
 
   if (queried) {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { fromJS } from "immutable";
 
-import propsToJS from "helpers/props-to-js";
+import propsToJS from "data/props-to-js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fullRosterSuccess } from "redux/actions/players";
@@ -20,25 +20,29 @@ const FullRosterContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get("https://randomuser.me/api/?results=20&seed=ef982b7030296251")
-    .then(results => (
-      results.data
-    )).then(data => {
+    const fetchPlayers = async () => {
+      const result = await axios.get
+          ("https://randomuser.me/api/?results=20&seed=ef982b7030296251");
+
       const returnPlayers = fromJS(
         {
           list:
-            data.results.map((player: Player, number: number) => ({
+            result.data.results.map((player: Player, number: number) => ({
               number: number,
-              name: player.name
-            }))
+              name: {
+                first: player.name.first,
+                last: player.name.last,
+              },
+            })),
         }
       );
 
-      dispatch(fullRosterSuccess()(returnPlayers));
-
+      dispatch(fullRosterSuccess(returnPlayers));
       setQueried(true);
-    });
-  });
+    };
+
+    fetchPlayers();
+  }, []);
 
   const players = useSelector(getPlayers);
 
