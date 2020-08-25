@@ -23,10 +23,13 @@ const FullRosterSchema = {
             },
             "required": [ "first", "last" ],
             "additionalProperties": false
+          },
+          "pictureSrc": {
+            "type": "string"
           }
         },
         "required": [ "number", "name" ],
-        "maxProperties": 3
+        "additionalProperties": false
       }
     }
   },
