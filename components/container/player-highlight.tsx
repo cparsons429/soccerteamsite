@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import propsToJS from "data/props-to-js";
-import getPlayerHighlight from "data/get-player-highlight";
-import validatePlayerHighlight from "data/validate-player-highlight";
+import getPlayerHighlight from "data/get/player-highlight";
+import validatePlayerHighlight from "data/validate/player-highlight";
 
 import { useDispatch, useSelector } from "react-redux";
 import { playerHighlightSuccess, playerHighlightFail }

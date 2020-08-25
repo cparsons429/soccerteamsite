@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import propsToJS from "data/props-to-js";
-import getFullRoster from "data/get-full-roster";
-import validateFullRoster from "data/validate-full-roster";
+import getFullRoster from "data/get/full-roster";
+import validateFullRoster from "data/validate/full-roster";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fullRosterSuccess, fullRosterFail } from "redux/actions/players";
