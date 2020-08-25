@@ -2,7 +2,8 @@ import { fromJS, getIn, setIn } from "immutable";
 
 import axios from "axios";
 
-import validatePlayerHighlight from "data/validate/player-highlight";
+import validate from "data/validate";
+import { PlayerHighlightData } from "models/schema";
 
 
 const getPlayerHighlight = async (id: string) => {
@@ -10,27 +11,27 @@ const getPlayerHighlight = async (id: string) => {
     const response = await axios.get
         ("https://randomuser.me/api/?results=20&seed=ef982b7030296251");
 
-    const results = fromJS(response.data.results[parseInt(id, 10)]);
-    let returnPlayer = fromJS({ });
+    if (validate(PlayerHighlightData, response.data)) {
+      const result = fromJS(response.data.results[parseInt(id, 10)]);
+      let returnPlayer = fromJS({ });
 
-    returnPlayer = setIn(returnPlayer, [ "number" ], parseInt(id, 10));
-    returnPlayer = setIn(
-      returnPlayer,
-      [ "name", "first" ],
-      getIn(results, ["name", "first"], null)
-    );
-    returnPlayer = setIn(
-      returnPlayer,
-      [ "name", "last" ],
-      getIn(results, [ "name", "last" ], null)
-    );
-    returnPlayer = setIn(
-      returnPlayer,
-      ["pictureSrc"],
-      getIn(results, [ "picture", "large"], null)
-    );
+      returnPlayer = setIn(returnPlayer, [ "number" ], parseInt(id, 10));
+      returnPlayer = setIn(
+        returnPlayer,
+        [ "name", "first" ],
+        getIn(result, ["name", "first"], null)
+      );
+      returnPlayer = setIn(
+        returnPlayer,
+        [ "name", "last" ],
+        getIn(result, [ "name", "last" ], null)
+      );
+      returnPlayer = setIn(
+        returnPlayer,
+        ["pictureSrc"],
+        getIn(result, [ "picture", "large"], null)
+      );
 
-    if (validatePlayerHighlight(returnPlayer)) {
       return returnPlayer;
     }
   } catch (err) { }
