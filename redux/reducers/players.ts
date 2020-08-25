@@ -21,24 +21,17 @@ const PlayersReducer = createReducer(initialState, builder =>
       return state;
     })
     .addCase(constants.FULL_ROSTER_SUCCESS, (state, action: RootAction) => {
-      const frsTmpState1 = setIn(state, ["players"], action.payload.players);
-
-      return frsTmpState1;
+      return setIn(state, ["players"], action.payload.players);
     }).addCase(constants.FULL_ROSTER_FAIL, (_state, _action: RootAction) => {
       return initialState;
     }).addCase(
         constants.PLAYER_HIGHLIGHT_SUCCESS,
         (state, action: RootAction) => {
-      const phsTmpState1 = setIn(state, ["players", "list", action.payload.id],
+      return setIn(state, ["players", "list", action.payload.id],
           action.payload.player);
-
-      return phsTmpState1;
     })
     .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, action: RootAction) => {
-      const phfTmpState1 = setIn(state,
-          ["players", "list", action.payload.id], null);
-
-      return phfTmpState1;
+      return setIn(state, ["players", "list", action.payload.id], null);
     })
     .addDefaultCase((state, _action: RootAction) => {
       return state;
