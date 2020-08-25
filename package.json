@@ -13,6 +13,7 @@
     "@types/react": "^16.9.46",
     "@types/react-redux": "^7.1.9",
     "@types/redux-immutable": "^4.0.1",
+    "ajv": "^6.12.4",
     "aos": "^2.3.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",

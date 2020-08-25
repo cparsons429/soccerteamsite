@@ -20,13 +20,19 @@ export const fullRosterFail = createAction(
 
 export const playerHighlightSuccess = createAction(
   constants.PLAYER_HIGHLIGHT_SUCCESS,
-  (player: Player) => ({
+  (player: Player, id: string) => ({
     payload: {
       player,
+      id,
     },
   })
 );
 
 export const playerHighlightFail = createAction(
-  constants.PLAYER_HIGHLIGHT_FAIL
+  constants.PLAYER_HIGHLIGHT_FAIL,
+  (id: string) => ({
+    payload: {
+      id,
+    },
+  })
 );

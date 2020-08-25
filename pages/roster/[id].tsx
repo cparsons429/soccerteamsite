@@ -7,7 +7,7 @@ import PlayerHighlightContainer from "components/container/player-highlight";
 
 
 type Props = {
-  numberStr: string;
+  id: string;
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
@@ -15,13 +15,13 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   return {
     props: {
-      numberStr: params!.number,
+      id: params!.id,
     }
   };
 };
 
 const Profile: React.FC<Props> = props => {
-  const { numberStr } = props;
+  const { id } = props;
 
   return (
     <div>
@@ -30,7 +30,7 @@ const Profile: React.FC<Props> = props => {
       </Head>
       <Navigation />
       <RosterHeader />
-      <PlayerHighlightContainer numberStr={numberStr} />
+      <PlayerHighlightContainer id={id} />
     </div>
   );
 };

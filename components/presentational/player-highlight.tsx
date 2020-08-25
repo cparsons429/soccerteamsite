@@ -9,6 +9,7 @@ type Props = {
 
 const PlayerHighlight: React.FC<Props> = props => {
   const { player } = props;
+  console.log(player);
 
   if ( player ) {
     return (

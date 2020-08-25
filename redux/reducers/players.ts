@@ -1,4 +1,4 @@
-import { fromJS, getIn, setIn } from "immutable";
+import { fromJS, setIn } from "immutable";
 
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -11,7 +11,7 @@ import { RootAction } from "models/types";
 
 const initialState = fromJS({
   players: {
-    list: [],
+    list: {},
   },
 });
 
@@ -24,18 +24,21 @@ const PlayersReducer = createReducer(initialState, builder =>
       const frsTmpState1 = setIn(state, ["players"], action.payload.players);
 
       return frsTmpState1;
-    })
-    .addCase(
+    }).addCase(constants.FULL_ROSTER_FAIL, (_state, _action: RootAction) => {
+      return initialState;
+    }).addCase(
         constants.PLAYER_HIGHLIGHT_SUCCESS,
         (state, action: RootAction) => {
-      const phsNumber = getIn(action.payload.player, ["number"], null);
-      const phsTmpState1 = setIn(state, ["players", "list", phsNumber],
+      const phsTmpState1 = setIn(state, ["players", "list", action.payload.id],
           action.payload.player);
 
       return phsTmpState1;
     })
-    .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, _action: RootAction) => {
-      return state;
+    .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, action: RootAction) => {
+      const phfTmpState1 = setIn(state,
+          ["players", "list", action.payload.id], null);
+
+      return phfTmpState1;
     })
     .addDefaultCase((state, _action: RootAction) => {
       return state;

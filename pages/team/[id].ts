@@ -5,7 +5,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   const { res, params } = context;
 
   res.statusCode = 301;
-  res.setHeader("Location", `/roster/${params!.number}`);
+  res.setHeader("Location", `/roster/${params!.id}`);
   res.end();
 
   return { props: {} };

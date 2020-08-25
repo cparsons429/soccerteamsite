@@ -10,6 +10,6 @@ export const getPlayers = (state: RootState) =>
 
 export const getPlayer = createSelector(
   getPlayers,
-  (_: RootState, number: number) => number,
-  (players, number) => getIn(players, ["list", number], null)
+  (_: RootState, id: string) => id,
+  (players, id) => getIn(players, ["list", id], null)
 );

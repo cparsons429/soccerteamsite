@@ -10,5 +10,7 @@ export interface Player {
 };
 
 export interface Players {
-  list: Player[];
+  list: {
+    [key: string]: Player,
+  };
 };

@@ -1,50 +1,40 @@
 import { useState, useEffect } from "react";
 
-import { fromJS } from "immutable";
-
 import propsToJS from "data/props-to-js";
+import getFullRoster from "data/get-full-roster";
+import fullRosterValidate from "data/full-roster-validate";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fullRosterSuccess } from "redux/actions/players";
+import { fullRosterSuccess, fullRosterFail } from "redux/actions/players";
 import { getPlayers } from "redux/selectors/players";
 
-import axios from "axios";
-
 import FullRoster from "components/presentational/full-roster";
-
-import { Player } from "models/interfaces";
 
 
 const FullRosterContainer = () => {
   const [ queried, setQueried ] = useState(false);
   const dispatch = useDispatch();
+  const players = useSelector(getPlayers);
 
   useEffect(() => {
-    const fetchPlayers = async () => {
-      const result = await axios.get
-          ("https://randomuser.me/api/?results=20&seed=ef982b7030296251");
+    if (!fullRosterValidate(players)) {
+      const query = async () => {
+        const returnPlayers = await getFullRoster();
 
-      const returnPlayers = fromJS(
-        {
-          list:
-            result.data.results.map((player: Player, number: number) => ({
-              number: number,
-              name: {
-                first: player.name.first,
-                last: player.name.last,
-              },
-            })),
+        if (returnPlayers) {
+          dispatch(fullRosterSuccess(returnPlayers));
+        } else {
+          dispatch(fullRosterFail());
         }
-      );
 
-      dispatch(fullRosterSuccess(returnPlayers));
+        setQueried(true);
+      }
+
+      query();
+    } else {
       setQueried(true);
-    };
-
-    fetchPlayers();
+    }
   }, []);
-
-  const players = useSelector(getPlayers);
 
   if (queried) {
     return <FullRoster {...propsToJS({ players })} />;
