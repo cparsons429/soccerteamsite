@@ -1,6 +1,6 @@
 import ajv from "ajv";
 
-import PlayerHighlightSchema from "models/player-highlight";
+import PlayerHighlightSchema from "models/schema/player-highlight";
 
 
 const validatePlayerHighlight = (maybePlayerHighlight: any) => {

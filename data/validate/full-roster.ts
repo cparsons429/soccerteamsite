@@ -1,6 +1,6 @@
 import ajv from "ajv";
 
-import FullRosterSchema from "models/full-roster";
+import FullRosterSchema from "models/schema/full-roster";
 
 
 const validateFullRoster = (maybeFullRoster: any) => {
