@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import propsToJS from "data/props-to-js";
 import getFullRoster from "data/get-full-roster";
-import fullRosterValidate from "data/full-roster-validate";
+import validateFullRoster from "data/validate-full-roster";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fullRosterSuccess, fullRosterFail } from "redux/actions/players";
@@ -17,7 +17,7 @@ const FullRosterContainer = () => {
   const players = useSelector(getPlayers);
 
   useEffect(() => {
-    if (!fullRosterValidate(players)) {
+    if (!validateFullRoster(players)) {
       const query = async () => {
         const returnPlayers = await getFullRoster();
 

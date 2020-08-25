@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import propsToJS from "data/props-to-js";
 import getPlayerHighlight from "data/get-player-highlight";
-import playerHighlightValidate from "data/player-highlight-validate";
+import validatePlayerHighlight from "data/validate-player-highlight";
 
 import { useDispatch, useSelector } from "react-redux";
 import { playerHighlightSuccess, playerHighlightFail }
@@ -27,7 +27,7 @@ const PlayerHighlightContainer: React.FC<Props> = props => {
   );
 
   useEffect(() => {
-    if (!playerHighlightValidate(player)) {
+    if (!validatePlayerHighlight(player)) {
       const query = async () => {
         const returnPlayer = await getPlayerHighlight(id);
 

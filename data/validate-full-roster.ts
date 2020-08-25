@@ -3,8 +3,8 @@ import ajv from "ajv";
 import FullRosterSchema from "models/full-roster";
 
 
-const fullRosterValidate = (maybeFullRoster: any) => {
+const validateFullRoster = (maybeFullRoster: any) => {
   return ajv().validate(FullRosterSchema, maybeFullRoster);
 };
 
-export default fullRosterValidate;
+export default validateFullRoster;

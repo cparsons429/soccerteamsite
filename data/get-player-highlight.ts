@@ -2,7 +2,7 @@ import { fromJS, getIn, setIn } from "immutable";
 
 import axios from "axios";
 
-import playerHighlightValidate from "data/player-highlight-validate";
+import validatePlayerHighlight from "data/validate-player-highlight";
 
 
 const getPlayerHighlight = async (id: string) => {
@@ -30,7 +30,7 @@ const getPlayerHighlight = async (id: string) => {
       getIn(results, [ "picture", "large"], null)
     );
 
-    if (playerHighlightValidate(returnPlayer)) {
+    if (validatePlayerHighlight(returnPlayer)) {
       return returnPlayer;
     }
   } catch (err) { }

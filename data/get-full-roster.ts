@@ -2,7 +2,7 @@ import { fromJS, getIn, setIn } from "immutable";
 
 import axios from "axios";
 
-import fullRosterValidate from "data/full-roster-validate";
+import validateFullRoster from "data/validate-full-roster";
 
 
 const getFullRoster = async () => {
@@ -31,7 +31,7 @@ const getFullRoster = async () => {
       );
     }
 
-    if (fullRosterValidate(returnPlayers)) {
+    if (validateFullRoster(returnPlayers)) {
       return returnPlayers;
     }
   } catch (err) { }
