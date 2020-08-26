@@ -1,10 +1,13 @@
 import ajv from "ajv";
+import { JSONSchema7Type } from "json-schema";
 
-import { Schema } from "models/types";
 
-
-const validate = (schema: Schema, json: any) => {
-  return ajv().validate(schema, json);
+const validate = (schema: JSONSchema7Type | boolean, json: any) => {
+  if (typeof schema === "boolean") {
+    return schema;
+  }
+  
+  return ajv().validate(schema as object, json);
 };
 
 export default validate;

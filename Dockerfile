@@ -4,7 +4,7 @@ WORKDIR /usr/app
 
 RUN npm install --global pm2
 
-COPY package*.json ./
+COPY package*.json tsconfig.json ./
 
 RUN npm install --production
 

@@ -67,10 +67,7 @@ export const PlayerHighlightData = () => ({
 
 export const FullRosterProps = (playersListSize: number | null) => {
   if (playersListSize === null) {
-    return {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "type": "null",
-    };
+    return false;
   } else {
     return {
       "$schema": "http://json-schema.org/draft-07/schema#",
