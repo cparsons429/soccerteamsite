@@ -7,9 +7,10 @@ import { Player, Players } from "models/interfaces";
 
 export const fullRosterSuccess = createAction(
   constants.FULL_ROSTER_SUCCESS,
-  (players: Players) => ({
+  (players: Players, totalPlayers: number) => ({
     payload: {
       players,
+      totalPlayers,
     },
   })
 );

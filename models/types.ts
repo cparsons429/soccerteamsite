@@ -9,7 +9,7 @@ export type RootAction = ActionType<typeof
 export type RootState = StateType<ReturnType<typeof
     import("redux/reducers/index").default>>;
 
-export type Schema = typeof schema.FullRosterData |
-    typeof schema.PlayerHighlightData |
-    typeof schema.FullRosterProps |
-    typeof schema.PlayerHighlightProps;
+export type Schema = schema.FullRosterData |
+    schema.PlayerHighlightData |
+    schema.FullRosterProps |
+    schema.PlayerHighlightProps;

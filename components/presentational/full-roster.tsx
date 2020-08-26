@@ -5,6 +5,7 @@ import { Players } from "models/interfaces";
 
 type Props = {
   players: Players;
+  totalPlayers: number;
 };
 
 const FullRoster: React.FC<Props> = props => {

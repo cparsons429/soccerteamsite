@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import propsToJS from "data/props-to-js";
+import toJS from "data/to-js";
 import getPlayerHighlight from "data/get/player-highlight";
 import validate from "data/validate";
 import { PlayerHighlightProps } from "models/schema";
@@ -28,7 +28,7 @@ const PlayerHighlightContainer: React.FC<Props> = props => {
   );
 
   useEffect(() => {
-    if (!validate(PlayerHighlightProps, propsToJS(player))) {
+    if (!validate(PlayerHighlightProps(), toJS(player))) {
       const query = async () => {
         const returnPlayer = await getPlayerHighlight(id);
 
@@ -48,7 +48,7 @@ const PlayerHighlightContainer: React.FC<Props> = props => {
   }, []);
 
   if (queried) {
-    return <PlayerHighlight {...propsToJS({ player })} />;
+    return <PlayerHighlight {...toJS({ player })} />;
   } else {
     return <div />;
   }

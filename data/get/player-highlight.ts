@@ -11,7 +11,11 @@ const getPlayerHighlight = async (id: string) => {
     const response = await axios.get
         ("https://randomuser.me/api/?results=20&seed=ef982b7030296251");
 
-    if (validate(PlayerHighlightData, response.data)) {
+    if (validate(PlayerHighlightData(), response.data)
+        && parseInt(id, 10) > -1 && parseInt(id, 10) < 20) {
+      // TODO: delete this part of the condition with parseInts
+      // those are just placeholders until we actually control the API endpoint
+      // at that point, a failure will be handled exactly as expected
       const result = fromJS(response.data.results[parseInt(id, 10)]);
       let returnPlayer = fromJS({ });
 

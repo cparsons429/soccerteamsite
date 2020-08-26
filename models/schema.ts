@@ -1,6 +1,5 @@
-export const FullRosterData = {
+export const FullRosterData = () => ({
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "FullRosterData",
   "type": "object",
   "properties": {
     "results": {
@@ -26,11 +25,10 @@ export const FullRosterData = {
     }
   },
   "required": [ "results" ]
-};
+});
 
-export const PlayerHighlightData = {
+export const PlayerHighlightData = () => ({
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "PlayerHighlightData",
   "type": "object",
   "properties": {
     "results": {
@@ -65,45 +63,64 @@ export const PlayerHighlightData = {
     }
   },
   "required": [ "results" ]
-};
+});
 
-export const FullRosterProps = {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "FullRoster",
-  "type": "object",
-  "properties": {
-    "list": {
+export const FullRosterProps = (playersListSize: number | null) => {
+  if (playersListSize === null) {
+    return {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "null",
+    };
+  } else {
+    return {
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "number": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "object",
-            "properties": {
-              "first": {
-                "type": "string"
+      "properties": {
+        "players": {
+          "type": "object",
+          "properties": {
+            "list": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "first": {
+                        "type": "string"
+                      },
+                      "last": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [ "first", "last" ],
+                  },
+                  "pictureSrc": {
+                    "type": "string"
+                  }
+                },
+                "required": [ "number", "name" ],
               },
-              "last": {
-                "type": "string"
-              }
-            },
-            "required": [ "first", "last" ],
+              "minProperties": playersListSize,
+              "maxProperties": playersListSize
+            }
           },
-          "pictureSrc": {
-            "type": "string"
-          }
+          "required": [ "list" ]
         },
-        "required": [ "number", "name" ],
-      }
-    }
-  },
-  "required": [ "list" ]
+        "totalPlayers": {
+          "type": "integer"
+        }
+      },
+      "required": [ "players", "totalPlayers" ]
+    };
+  }
 };
 
-export const PlayerHighlightProps = {
+export const PlayerHighlightProps = () => ({
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "PlayerHighlight",
   "type": "object",
@@ -128,4 +145,4 @@ export const PlayerHighlightProps = {
     }
   },
   "required": [ "number", "name", "pictureSrc" ],
-};
+});
