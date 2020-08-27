@@ -4,7 +4,6 @@ import Navigation from "components/presentational/navigation";
 import RosterHeader from "components/presentational/roster-header";
 import FullRosterContainer from "components/container/full-roster";
 
-
 const Roster = () => (
   <div>
     <Head>

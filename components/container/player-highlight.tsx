@@ -6,26 +6,25 @@ import validate from "data/validate";
 import { PlayerHighlightProps } from "models/schema";
 
 import { useDispatch, useSelector } from "react-redux";
-import { playerHighlightSuccess, playerHighlightFail }
-    from "redux/actions/players";
+import {
+  playerHighlightSuccess,
+  playerHighlightFail
+} from "redux/actions/players";
 import { getPlayer } from "redux/selectors/players";
 
 import PlayerHighlight from "components/presentational/player-highlight";
 
 import { RootState } from "models/types";
 
-
 type Props = {
   id: string;
 };
 
 const PlayerHighlightContainer: React.FC<Props> = props => {
-  const [ id ] = useState(props.id);
-  const [ queried, setQueried ] = useState(false);
+  const [id] = useState(props.id);
+  const [queried, setQueried] = useState(false);
   const dispatch = useDispatch();
-  const player = useSelector(
-    (state: RootState) => getPlayer(state, id)
-  );
+  const player = useSelector((state: RootState) => getPlayer(state, id));
 
   useEffect(() => {
     if (!validate(PlayerHighlightProps(), toJS(player))) {
@@ -39,7 +38,7 @@ const PlayerHighlightContainer: React.FC<Props> = props => {
         }
 
         setQueried(true);
-      }
+      };
 
       query();
     } else {
@@ -52,6 +51,6 @@ const PlayerHighlightContainer: React.FC<Props> = props => {
   } else {
     return <div />;
   }
-}
+};
 
 export default PlayerHighlightContainer;

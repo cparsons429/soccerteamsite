@@ -2,13 +2,12 @@ import Link from "next/link";
 
 import { Container, Navbar, Nav } from "react-bootstrap";
 
-
 const Navigation = () => (
   <Container>
     <Navbar bg="white" expand="lg">
       <Link href="/">
         <Navbar.Brand>
-          <img src="/vercel.svg" alt="Kickers" style={{width: 100 + 'px'}}/>
+          <img src="/vercel.svg" alt="Kickers" style={{ width: 100 + "px" }} />
         </Navbar.Brand>
       </Link>
 

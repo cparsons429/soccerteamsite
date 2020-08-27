@@ -5,7 +5,6 @@ import Navigation from "components/presentational/navigation";
 import RosterHeader from "components/presentational/roster-header";
 import PlayerHighlightContainer from "components/container/player-highlight";
 
-
 type Props = {
   id: string;
 };
@@ -15,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   return {
     props: {
-      id: params!.id,
+      id: params!.id
     }
   };
 };

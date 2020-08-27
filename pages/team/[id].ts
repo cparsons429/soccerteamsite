@@ -1,6 +1,5 @@
 import { GetServerSideProps } from "next";
 
-
 export const getServerSideProps: GetServerSideProps = async context => {
   const { res, params } = context;
 
@@ -9,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   res.end();
 
   return { props: {} };
-}
+};
 
 const EmptyPage = () => {};
 

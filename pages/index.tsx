@@ -5,7 +5,6 @@ import Navigation from "components/presentational/navigation";
 import { Container } from "react-bootstrap";
 import styles from "styles/index.module.css";
 
-
 const Index = () => (
   <div>
     <Head>

@@ -13,30 +13,34 @@ import { getPlayersState } from "redux/selectors/players";
 
 import FullRoster from "components/presentational/full-roster";
 
-
 const FullRosterContainer = () => {
-  const [ queried, setQueried ] = useState(false);
+  const [queried, setQueried] = useState(false);
   const dispatch = useDispatch();
   const playersState = useSelector(getPlayersState);
 
   useEffect(() => {
-    if (!validate(
-        FullRosterProps(getIn(playersState, ["totalPlayers"], null)), toJS(playersState)
-    )) {
+    if (
+      !validate(
+        FullRosterProps(getIn(playersState, ["totalPlayers"], null)),
+        toJS(playersState)
+      )
+    ) {
       const query = async () => {
         const returnPlayers = await getFullRoster();
 
         if (returnPlayers) {
-          dispatch(fullRosterSuccess(
-              getIn(returnPlayers, [ "players" ], null),
+          dispatch(
+            fullRosterSuccess(
+              getIn(returnPlayers, ["players"], null),
               getIn(returnPlayers, ["totalPlayers"], null)
-          ));
+            )
+          );
         } else {
           dispatch(fullRosterFail());
         }
 
         setQueried(true);
-      }
+      };
 
       query();
     } else {

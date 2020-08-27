@@ -2,7 +2,6 @@ import Head from "next/head";
 
 import Navigation from "components/presentational/navigation";
 
-
 const Schedule = () => (
   <div>
     <Head>

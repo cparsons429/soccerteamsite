@@ -8,8 +8,7 @@ import * as constants from "redux/constants/players";
 
 import { RootAction } from "models/types";
 
-
-const initialState = fromJS({ });
+const initialState = fromJS({});
 
 const PlayersReducer = createReducer(initialState, builder =>
   builder
@@ -19,14 +18,20 @@ const PlayersReducer = createReducer(initialState, builder =>
     .addCase(constants.FULL_ROSTER_SUCCESS, (state, action: RootAction) => {
       state = setIn(state, ["players"], action.payload.players);
       return setIn(state, ["totalPlayers"], action.payload.totalPlayers);
-    }).addCase(constants.FULL_ROSTER_FAIL, (_state, _action: RootAction) => {
-      return initialState;
-    }).addCase(
-        constants.PLAYER_HIGHLIGHT_SUCCESS,
-        (state, action: RootAction) => {
-      return setIn(state, ["players", "list", action.payload.id],
-          action.payload.player);
     })
+    .addCase(constants.FULL_ROSTER_FAIL, (_state, _action: RootAction) => {
+      return initialState;
+    })
+    .addCase(
+      constants.PLAYER_HIGHLIGHT_SUCCESS,
+      (state, action: RootAction) => {
+        return setIn(
+          state,
+          ["players", "list", action.payload.id],
+          action.payload.player
+        );
+      }
+    )
     .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, action: RootAction) => {
       return setIn(state, ["players", "list", action.payload.id], null);
     })

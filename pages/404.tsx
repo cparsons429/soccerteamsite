@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import Navigation from "components/presentational/navigation";
 
-
 const NotFound = () => (
   <div>
     <Head>
@@ -12,7 +11,9 @@ const NotFound = () => (
     <Navigation />
     <div>
       <h2>Uh oh! File not found.</h2>
-      <Link href="/"><a>Take me back home</a></Link>
+      <Link href="/">
+        <a>Take me back home</a>
+      </Link>
     </div>
   </div>
 );

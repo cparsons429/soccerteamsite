@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { Players } from "models/interfaces";
 
-
 type Props = {
   players: Players;
   totalPlayers: number;
@@ -13,21 +12,21 @@ const FullRoster: React.FC<Props> = props => {
 
   const presentationalPlayers = [];
 
-  for (const [ key, player ] of Object.entries(players.list)) {
+  for (const [key, player] of Object.entries(players.list)) {
     presentationalPlayers.push(
       <li key={key}>
         <Link href="/roster/[id]" as={`/roster/${key}`}>
-          <a>#{player.number} {player.name.first} {player.name.last}</a>
+          <a>
+            #{player.number} {player.name.first} {player.name.last}
+          </a>
         </Link>
       </li>
-    )
+    );
   }
 
   return (
     <div>
-      <ul>
-        {presentationalPlayers}
-      </ul>
+      <ul>{presentationalPlayers}</ul>
     </div>
   );
 };

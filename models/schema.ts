@@ -1,68 +1,68 @@
 export const FullRosterData = () => ({
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "results": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "object",
-            "properties": {
-              "first": {
-                "type": "string"
+  $schema: "http://json-schema.org/draft-07/schema#",
+  type: "object",
+  properties: {
+    results: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          name: {
+            type: "object",
+            properties: {
+              first: {
+                type: "string"
               },
-              "last": {
-                "type": "string"
+              last: {
+                type: "string"
               }
             },
-            "required": [ "first", "last" ],
+            required: ["first", "last"]
           }
         },
-        "required": [ "name" ],
+        required: ["name"]
       }
     }
   },
-  "required": [ "results" ]
+  required: ["results"]
 });
 
 export const PlayerHighlightData = () => ({
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "results": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "object",
-            "properties": {
-              "first": {
-                "type": "string"
+  $schema: "http://json-schema.org/draft-07/schema#",
+  type: "object",
+  properties: {
+    results: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          name: {
+            type: "object",
+            properties: {
+              first: {
+                type: "string"
               },
-              "last": {
-                "type": "string"
+              last: {
+                type: "string"
               }
             },
-            "required": [ "first", "last" ],
+            required: ["first", "last"]
           },
-          "picture": {
-            "type": "object",
-            "properties": {
-              "large": {
-                "type": "string"
+          picture: {
+            type: "object",
+            properties: {
+              large: {
+                type: "string"
               }
             },
-            "required": [ "large" ]
+            required: ["large"]
           }
         },
-        "required": [ "name", "picture" ],
+        required: ["name", "picture"]
       }
     }
   },
-  "required": [ "results" ]
+  required: ["results"]
 });
 
 export const FullRosterProps = (playersListSize: number | null) => {
@@ -70,76 +70,76 @@ export const FullRosterProps = (playersListSize: number | null) => {
     return false;
   } else {
     return {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "type": "object",
-      "properties": {
-        "players": {
-          "type": "object",
-          "properties": {
-            "list": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "properties": {
-                  "number": {
-                    "type": "integer"
+      $schema: "http://json-schema.org/draft-07/schema#",
+      type: "object",
+      properties: {
+        players: {
+          type: "object",
+          properties: {
+            list: {
+              type: "object",
+              additionalProperties: {
+                type: "object",
+                properties: {
+                  number: {
+                    type: "integer"
                   },
-                  "name": {
-                    "type": "object",
-                    "properties": {
-                      "first": {
-                        "type": "string"
+                  name: {
+                    type: "object",
+                    properties: {
+                      first: {
+                        type: "string"
                       },
-                      "last": {
-                        "type": "string"
+                      last: {
+                        type: "string"
                       }
                     },
-                    "required": [ "first", "last" ],
+                    required: ["first", "last"]
                   },
-                  "pictureSrc": {
-                    "type": "string"
+                  pictureSrc: {
+                    type: "string"
                   }
                 },
-                "required": [ "number", "name" ],
+                required: ["number", "name"]
               },
-              "minProperties": playersListSize,
-              "maxProperties": playersListSize
+              minProperties: playersListSize,
+              maxProperties: playersListSize
             }
           },
-          "required": [ "list" ]
+          required: ["list"]
         },
-        "totalPlayers": {
-          "type": "integer"
+        totalPlayers: {
+          type: "integer"
         }
       },
-      "required": [ "players", "totalPlayers" ]
+      required: ["players", "totalPlayers"]
     };
   }
 };
 
 export const PlayerHighlightProps = () => ({
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "PlayerHighlight",
-  "type": "object",
-  "properties": {
-    "number": {
-      "type": "integer"
+  $schema: "http://json-schema.org/draft-07/schema#",
+  title: "PlayerHighlight",
+  type: "object",
+  properties: {
+    number: {
+      type: "integer"
     },
-    "name": {
-      "type": "object",
-      "properties": {
-        "first": {
-          "type": "string"
+    name: {
+      type: "object",
+      properties: {
+        first: {
+          type: "string"
         },
-        "last": {
-          "type": "string"
+        last: {
+          type: "string"
         }
       },
-      "required": [ "first", "last" ],
+      required: ["first", "last"]
     },
-    "pictureSrc": {
-      "type": "string"
+    pictureSrc: {
+      type: "string"
     }
   },
-  "required": [ "number", "name", "pictureSrc" ],
+  required: ["number", "name", "pictureSrc"]
 });

@@ -6,12 +6,11 @@ import { HYDRATE } from "next-redux-wrapper";
 
 import * as playersActions from "redux/actions/players";
 
-
 export const hydrate = createAction(HYDRATE);
 
 const action = fromJS({
   hydrate: hydrate,
-  players: playersActions,
+  players: playersActions
 });
 
 export default action;
