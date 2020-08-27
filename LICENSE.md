@@ -1,4 +1,9 @@
-© Colin Parsons 2020. All rights reserved. This applies to all files in this repository, except, of course, third-party libraries, most of which have their own licenses. This software is intended for my personal use alone, unless specified otherwise in writing.
+COLIN PARSONS CONFIDENTIAL
+Unpublished Copyright (c) 2020 Colin Parsons. All rights reserved.
+
+NOTICE: All information contained herein is, and remains the property of Colin Parsons. The intellectual and technical concepts contained herein are proprietary to Colin Parsons and may be covered by U.S. and Foreign Patents, patents in process, and are protected by trade secret or copyright law. Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained from Colin Parsons. Access to the source code contained herein is hereby forbidden to anyone except Colin Parsons and anyone who has signed Confidentiality and Non-disclosure agreements with Colin Parsons explicitly covering such access. This applies to all files in this repository, except, of course, third-party libraries, most of which have their own licenses. Those licenses can typically be found in their source code in various repositories on GitHub.
+
+The copyright notice above does not evidence any actual or intended publication or disclosure of this source code, which includes information that is confidential and/or proprietary, and is a trade secret, of Colin Parsons. ANY REPRODUCTION, MODIFICATION, DISTRIBUTION, PUBLIC PERFORMANCE, OR PUBLIC DISPLAY OF OR THROUGH USE OF THIS SOURCE CODE WITHOUT THE EXPRESS WRITTEN CONSENT OF COLIN PARSONS IS STRICTLY PROHIBITED, AND IN VIOLATION OF APPLICABLE LAWS AND INTERNATIONAL TREATIES. THE RECEIPT OR POSSESSION OF THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY ANY RIGHTS TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
 
 Even if written permission is granted permitting access to this software, the following conditions must be met:
 

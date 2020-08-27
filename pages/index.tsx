@@ -1,3 +1,12 @@
+/**
+ * @Author: colinparsons
+ * @Date:   1985-10-26T01:15:00-07:00
+ * @Last modified by:   colinparsons
+ * @Last modified time: 2020-08-27T13:58:54-07:00
+ * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
+ * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved.
+ */
+
 import Head from "next/head";
 
 import Navigation from "components/presentational/navigation";
