@@ -40,7 +40,7 @@ Date: [The date the file was created]
 Last modified by: [Your name or GitHub username, if you are the most recent modifier of this file]
 Last modified time: [The current ISO standard of timestamp representing when you last modified this file, if you are the most recent modifier of this file]
 License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
-Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved.
+Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
 
 (10) You agree to notify Colin Parsons of any facts or circumstances of which You become aware that would make these representations inaccurate in any respect.
 
