@@ -1,4 +1,13 @@
-import { fromJS, getIn, setIn } from "immutable";
+/**
+ * @Author: colinparsons
+ * @Date:   2020-08-23T08:52:20-07:00
+ * @Last modified by:   colinparsons
+ * @Last modified time: 2020-08-28T14:28:23-07:00
+ * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
+ * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
+ */
+
+import { fromJS, setIn } from "immutable";
 
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -8,12 +17,7 @@ import * as constants from "redux/constants/players";
 
 import { RootAction } from "models/types";
 
-
-const initialState = fromJS({
-  players: {
-    list: [],
-  },
-});
+const initialState = fromJS({});
 
 const PlayersReducer = createReducer(initialState, builder =>
   builder
@@ -21,19 +25,24 @@ const PlayersReducer = createReducer(initialState, builder =>
       return state;
     })
     .addCase(constants.FULL_ROSTER_SUCCESS, (state, action: RootAction) => {
-      const frsTmpState1 = setIn(state, ["players"], action.payload);
-
-      return frsTmpState1;
+      state = setIn(state, ["players"], action.payload.players);
+      return setIn(state, ["totalPlayers"], action.payload.totalPlayers);
     })
-    .addCase(constants.PLAYER_HIGHLIGHT_SUCCESS, (state, action: RootAction) => {
-      const phsNumber = getIn(action.payload, ["number"], null);
-      const phsTmpState1 = setIn(state, ["players", "list", phsNumber],
-          action.payload);
-
-      return phsTmpState1;
+    .addCase(constants.FULL_ROSTER_FAIL, (_state, _action: RootAction) => {
+      return initialState;
     })
-    .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, _action: RootAction) => {
-      return state;
+    .addCase(
+      constants.PLAYER_HIGHLIGHT_SUCCESS,
+      (state, action: RootAction) => {
+        return setIn(
+          state,
+          ["players", "list", action.payload.id],
+          action.payload.player
+        );
+      }
+    )
+    .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, action: RootAction) => {
+      return setIn(state, ["players", "list", action.payload.id], null);
     })
     .addDefaultCase((state, _action: RootAction) => {
       return state;

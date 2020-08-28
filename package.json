@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
+    "@types/json-schema": "^7.0.5",
     "@types/node": "^14.6.0",
     "@types/react": "^16.9.46",
     "@types/react-redux": "^7.1.9",
     "@types/redux-immutable": "^4.0.1",
+    "ajv": "^6.12.4",
     "aos": "^2.3.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
@@ -27,7 +29,6 @@
     "redux-immutable": "^4.0.0",
     "reselect": "^4.0.0",
     "typesafe-actions": "^5.1.0",
-    "typescript": "^4.0.2",
-    "with-immutable-props-to-js": "^2.1.0"
+    "typescript": "^4.0.2"
   }
 }

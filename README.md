@@ -22,6 +22,8 @@ docker-compose up -d --build
 
 The nomenclature, coding style, and organizational patterns modeled in this repo should be seen as standards for my code from now on.
 
-## License
+## License and Copyright
 
-License and copyright information at LICENSE.md.
+License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
+
+Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
