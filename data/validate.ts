@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-08-25T10:46:23-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-08-27T18:19:35-07:00
+ * @Last modified time: 2020-09-02T11:21:39-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -12,10 +12,18 @@ import { JSONSchema7Type } from "json-schema";
 
 const validate = (schema: JSONSchema7Type | boolean, json: any) => {
   if (typeof schema === "boolean") {
-    return schema;
+    throw new Error(
+      "Schema was automatically set to false, causing this test to fail"
+    );
+  } else if (!ajv().validate(schema as object, json)) {
+    throw new Error(
+      "JSON failed validation test with structure:\n".concat(
+        json,
+        "\nand schema:\n",
+        schema === null ? "null" : schema.toString()
+      )
+    );
   }
-
-  return ajv().validate(schema as object, json);
 };
 
 export default validate;

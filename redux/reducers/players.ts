@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-08-23T08:52:20-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-08-28T14:28:23-07:00
+ * @Last modified time: 2020-09-02T10:50:34-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -24,13 +24,25 @@ const PlayersReducer = createReducer(initialState, builder =>
     .addCase(HYDRATE, (state, _action: RootAction) => {
       return state;
     })
-    .addCase(constants.FULL_ROSTER_SUCCESS, (state, action: RootAction) => {
-      state = setIn(state, ["players"], action.payload.players);
-      return setIn(state, ["totalPlayers"], action.payload.totalPlayers);
+    .addCase(constants.FULL_ROSTER_REQUEST, (_state, action: RootAction) => {
+      return fromJS(action.payload);
     })
-    .addCase(constants.FULL_ROSTER_FAIL, (_state, _action: RootAction) => {
-      return initialState;
+    .addCase(constants.FULL_ROSTER_SUCCESS, (_state, action: RootAction) => {
+      return fromJS(action.payload);
     })
+    .addCase(constants.FULL_ROSTER_FAIL, (_state, action: RootAction) => {
+      return fromJS(action.payload);
+    })
+    .addCase(
+      constants.PLAYER_HIGHLIGHT_REQUEST,
+      (state, action: RootAction) => {
+        return setIn(
+          state,
+          ["players", "list", action.payload.id],
+          action.payload.player
+        );
+      }
+    )
     .addCase(
       constants.PLAYER_HIGHLIGHT_SUCCESS,
       (state, action: RootAction) => {
@@ -42,7 +54,11 @@ const PlayersReducer = createReducer(initialState, builder =>
       }
     )
     .addCase(constants.PLAYER_HIGHLIGHT_FAIL, (state, action: RootAction) => {
-      return setIn(state, ["players", "list", action.payload.id], null);
+      return setIn(
+        state,
+        ["players", "list", action.payload.id],
+        action.payload.player
+      );
     })
     .addDefaultCase((state, _action: RootAction) => {
       return state;
