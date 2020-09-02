@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-09-01T10:02:25-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-02T16:06:00-07:00
+ * @Last modified time: 2020-09-02T16:34:50-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -32,12 +32,12 @@ export function* fullRosterWorker() {
       players = setIn(
         players,
         ["list", i.toString(), "name", "first"],
-        getIn(results, [i, "name", "first"], null)
+        getIn(results, [i, "name", "first"], undefined)
       );
       players = setIn(
         players,
         ["list", i.toString(), "name", "last"],
-        getIn(results, [i, "name", "last"], null)
+        getIn(results, [i, "name", "last"], undefined)
       );
     }
 

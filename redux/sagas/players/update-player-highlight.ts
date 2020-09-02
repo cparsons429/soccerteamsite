@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-09-01T10:02:44-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-02T16:05:50-07:00
+ * @Last modified time: 2020-09-02T16:35:04-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -54,17 +54,17 @@ export function* playerHighlightWorker(
     player = setIn(
       player,
       ["name", "first"],
-      getIn(result, ["name", "first"], null)
+      getIn(result, ["name", "first"], undefined)
     );
     player = setIn(
       player,
       ["name", "last"],
-      getIn(result, ["name", "last"], null)
+      getIn(result, ["name", "last"], undefined)
     );
     player = setIn(
       player,
       ["pictureSrc"],
-      getIn(result, ["picture", "large"], null)
+      getIn(result, ["picture", "large"], undefined)
     );
 
     yield put(playerHighlightSuccess(player, id));
