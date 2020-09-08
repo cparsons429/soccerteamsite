@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-09-01T10:02:44-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-03T13:35:52-07:00
+ * @Last modified time: 2020-09-06T15:21:31-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -14,7 +14,7 @@ import { AnyAction } from "@reduxjs/toolkit";
 import { throttle, call, put } from "redux-saga/effects";
 import { PLAYER_HIGHLIGHT_REQUEST } from "redux/constants";
 import { playerHighlightSuccess, playerHighlightFail } from "redux/actions";
-import PlayersServiceAPI from "redux/sagas/apis/players-service";
+import PlayersServiceAPI from "redux/apis/players-service";
 
 import validate from "data/validate";
 import { PlayerHighlight } from "models/schema";
