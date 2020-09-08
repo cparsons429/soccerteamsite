@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-08-23T08:52:20-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-08-27T18:21:15-07:00
+ * @Last modified time: 2020-09-08T12:53:19-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -11,13 +11,15 @@ import { getIn } from "immutable";
 
 import { createSelector } from "reselect";
 
-import { RootState } from "models/types";
+import RootState from "models/root-state";
 
-export const getPlayersState = (state: RootState) =>
-  getIn(state, ["playersState"], null);
+export const getCount = (state: RootState) => getIn(state, ["count"], NaN);
 
-export const getPlayer = createSelector(
-  getPlayersState,
+export const getFullRoster = (state: RootState) =>
+  getIn(state, ["players"], undefined);
+
+export const getPlayerHighlight = createSelector(
+  getFullRoster,
   (_: RootState, id: string) => id,
-  (playersState, id) => getIn(playersState, ["players", "list", id], null)
+  (fullRoster, id) => getIn(fullRoster, ["list", id], undefined)
 );

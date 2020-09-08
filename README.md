@@ -1,6 +1,6 @@
 # Soccer Team Site
 
-A simple project using NGINX, PM2, Node.js, Next.js, React, Redux, Axios, Immutable.js, and Bootstrap to create a soccer team website. Functional files are written in TypeScript; design files are written in SCSS.
+A simple project using NGINX, PM2, Node.js, Next.js, React, Redux, Redux-Saga, Axios, Immutable.js, and Bootstrap to create a soccer team website. Functional files are written in TypeScript; design files are written in SCSS.
 
 ## Installation
 
