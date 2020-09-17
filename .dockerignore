@@ -14,3 +14,4 @@ docker-compose.yml
 node_modules/
 nginx/
 package-lock.json
+yarn.lock
