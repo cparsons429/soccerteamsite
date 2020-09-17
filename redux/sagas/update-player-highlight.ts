@@ -2,26 +2,30 @@
  * @Author: colinparsons
  * @Date:   2020-09-01T10:02:44-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-06T15:21:31-07:00
+ * @Last modified time: 2020-09-17T09:12:34-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
 
 import { fromJS, getIn, setIn } from "immutable";
 
-import { AnyAction } from "@reduxjs/toolkit";
-
 import { throttle, call, put } from "redux-saga/effects";
 import { PLAYER_HIGHLIGHT_REQUEST } from "redux/constants";
-import { playerHighlightSuccess, playerHighlightFail } from "redux/actions";
+import {
+  playerHighlightRequest,
+  playerHighlightSuccess,
+  playerHighlightFail
+} from "redux/actions";
 import PlayersServiceAPI from "redux/apis/players-service";
 
 import validate from "data/validate";
-import { PlayerHighlight } from "models/schema";
+import { PlayerHighlight } from "data/schema";
 
 export const PLAYER_HIGHLIGHT_THROTTLE_MS = 1000;
 
-export function* playerHighlightWorker(action: AnyAction) {
+export function* playerHighlightWorker(
+  action: ReturnType<typeof playerHighlightRequest>
+) {
   const id = getIn(action.payload, ["id"], undefined);
 
   try {

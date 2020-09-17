@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   1985-10-26T01:15:00-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-03T16:35:40-07:00
+ * @Last modified time: 2020-09-17T08:33:37-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -16,7 +16,7 @@ import "styles/globals.css";
 import { AppProps /*, AppContext */ } from "next/app";
 import Head from "next/head";
 
-const WrappedApp: React.FC<AppProps> = props => (
+const WrappedApp = (props: AppProps) => (
   <div>
     <Head>
       <link

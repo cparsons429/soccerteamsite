@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-08-23T17:20:43-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-08T14:00:33-07:00
+ * @Last modified time: 2020-09-17T08:27:39-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { getIn } from "immutable";
 
 import toJS from "data/to-js";
-import RootState from "models/root-state";
+import rootReducer from "redux/reducers/index";
 
 import { useDispatch, useSelector } from "react-redux";
 import { playerHighlightRequest } from "redux/actions";
@@ -28,10 +28,10 @@ type Props = {
   id: string;
 };
 
-const PlayerHighlightContainer: React.FC<Props> = props => {
+const PlayerHighlightContainer = (props: Props) => {
   const [id] = useState(props.id);
   const dispatch = useDispatch();
-  const playerHighlight = useSelector((state: RootState) =>
+  const playerHighlight = useSelector((state: ReturnType<typeof rootReducer>) =>
     getPlayerHighlight(state, id)
   );
   const status = getIn(playerHighlight, ["status"], undefined);

@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-09-03T13:00:05-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-05T18:56:08-07:00
+ * @Last modified time: 2020-09-16T19:19:51-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -28,30 +28,48 @@ import {
   playerHighlightFail
 } from "redux/actions";
 
+type PlayersState = {
+  status?: string;
+  list: {
+    [id: string]: {
+      status?: string;
+      name: {
+        first: string;
+        last: string;
+      };
+      number: number;
+      pictureSrc?: URL;
+    };
+  };
+};
+
 const initialState = fromJS({
   list: {}
 });
 
-const players = createReducer(initialState, builder =>
+const playersReducer = createReducer(initialState, builder =>
   builder
     .addCase(
       FULL_ROSTER_REQUEST,
-      (_state, action: ReturnType<typeof fullRosterRequest>) =>
+      (_state: PlayersState, action: ReturnType<typeof fullRosterRequest>) =>
         getIn(action.payload, ["players"], initialState)
     )
     .addCase(
       FULL_ROSTER_SUCCESS,
-      (_state, action: ReturnType<typeof fullRosterSuccess>) =>
+      (_state: PlayersState, action: ReturnType<typeof fullRosterSuccess>) =>
         getIn(action.payload, ["players"], initialState)
     )
     .addCase(
       FULL_ROSTER_FAIL,
-      (_state, action: ReturnType<typeof fullRosterFail>) =>
+      (_state: PlayersState, action: ReturnType<typeof fullRosterFail>) =>
         getIn(action.payload, ["players"], initialState)
     )
     .addCase(
       PLAYER_HIGHLIGHT_REQUEST,
-      (state, action: ReturnType<typeof playerHighlightRequest>) =>
+      (
+        state: PlayersState,
+        action: ReturnType<typeof playerHighlightRequest>
+      ) =>
         setIn(
           state,
           ["list", getIn(action.payload, ["id"], undefined)],
@@ -60,7 +78,10 @@ const players = createReducer(initialState, builder =>
     )
     .addCase(
       PLAYER_HIGHLIGHT_SUCCESS,
-      (state, action: ReturnType<typeof playerHighlightSuccess>) =>
+      (
+        state: PlayersState,
+        action: ReturnType<typeof playerHighlightSuccess>
+      ) =>
         setIn(
           state,
           ["list", getIn(action.payload, ["id"], undefined)],
@@ -69,7 +90,7 @@ const players = createReducer(initialState, builder =>
     )
     .addCase(
       PLAYER_HIGHLIGHT_FAIL,
-      (state, action: ReturnType<typeof playerHighlightFail>) =>
+      (state: PlayersState, action: ReturnType<typeof playerHighlightFail>) =>
         setIn(
           state,
           ["list", getIn(action.payload, ["id"], undefined)],
@@ -78,4 +99,4 @@ const players = createReducer(initialState, builder =>
     )
 );
 
-export default players;
+export default playersReducer;

@@ -2,7 +2,7 @@
  * @Author: colinparsons
  * @Date:   2020-09-03T11:26:42-07:00
  * @Last modified by:   colinparsons
- * @Last modified time: 2020-09-06T11:18:21-07:00
+ * @Last modified time: 2020-09-17T09:21:37-07:00
  * @License: License can be found in root directory at LICENSE.md, or at https://github.com/cparsons429/soccerteamsite/blob/master/LICENSE.md
  * @Copyright: Copyright (c) Colin Parsons @Last modified time. All rights reserved. Complete copyright information located in the License file (see above).
  */
@@ -12,8 +12,6 @@ import { createAction } from "@reduxjs/toolkit";
 import { fromJS, getIn, setIn } from "immutable";
 
 import * as constants from "redux/constants";
-
-import { Player, Players } from "models/interfaces";
 
 export const increment = createAction(constants.INCREMENT, (step?: number) => ({
   payload: fromJS({
@@ -38,9 +36,21 @@ export const fullRosterRequest = createAction(
   })
 );
 
+type FullRosterSuccess = {
+  list: {
+    [id: string]: {
+      name: {
+        first: string;
+        last: string;
+      };
+      number: number;
+    };
+  };
+};
+
 export const fullRosterSuccess = createAction(
   constants.FULL_ROSTER_SUCCESS,
-  (players: Players) => ({
+  (players: FullRosterSuccess) => ({
     payload: fromJS({
       players: {
         status: "SUCCESS",
@@ -70,9 +80,18 @@ export const playerHighlightRequest = createAction(
   })
 );
 
+type PlayerHighlightSuccess = {
+  name: {
+    first: string;
+    last: string;
+  };
+  number: number;
+  pictureSrc: URL;
+};
+
 export const playerHighlightSuccess = createAction(
   constants.PLAYER_HIGHLIGHT_SUCCESS,
-  (player: Player, id: string) => ({
+  (player: PlayerHighlightSuccess, id: string) => ({
     payload: fromJS({
       player: setIn(player, ["status"], "SUCCESS"),
       id
