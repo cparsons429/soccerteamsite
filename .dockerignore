@@ -11,6 +11,7 @@
 .dockerignore
 Dockerfile
 docker-compose.yml
+jest.config.js
 node_modules/
 nginx/
 package-lock.json
